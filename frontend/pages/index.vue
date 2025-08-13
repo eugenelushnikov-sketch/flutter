@@ -1,7 +1,7 @@
 <template>
 	<div class="space-y-10">
-		<Hero />
-		<NewsRail />
+		<HomeHero />
+		<HomeNewsRail />
 		<section class="space-y-4">
 			<div class="flex items-center justify-between">
 				<h2 class="text-lg font-semibold">New builds in the region</h2>
@@ -11,11 +11,18 @@
 				<ProjectCard v-for="n in 8" :key="n" :title="`Residential ${n}`" subtitle="Kyiv" badge="New" />
 			</div>
 		</section>
-		<DevelopersRow />
+		<HomeDevelopersRow />
 		<StatsStrip />
 		<NewProjects />
 		<SubscribeStrip />
 	</div>
 </template>
 <script setup lang="ts">
+import HomeHero from '~/components/home/Hero.vue'
+import HomeNewsRail from '~/components/home/NewsRail.vue'
+import HomeDevelopersRow from '~/components/home/DevelopersRow.vue'
+import StatsStrip from '~/components/home/StatsStrip.vue'
+import NewProjects from '~/components/home/NewProjects.vue'
+import SubscribeStrip from '~/components/home/SubscribeStrip.vue'
+import ProjectCard from '~/components/cards/ProjectCard.vue'
 </script>
