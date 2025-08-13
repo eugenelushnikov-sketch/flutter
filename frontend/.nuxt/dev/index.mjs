@@ -646,7 +646,10 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {}
+  "public": {
+    "apiBase": "http://localhost:3001/api",
+    "cdn": "http://localhost:9000/flatworthy-media"
+  }
 };
 const envOptions = {
   prefix: "NITRO_",
@@ -1005,23 +1008,6 @@ async function errorHandler(error, event) {
   // H3 will handle fallback
 }
 
-const script = `
-if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
-  Object.defineProperty(window, '__NUXT_DEVTOOLS_TIME_METRIC__', {
-    value: {},
-    enumerable: false,
-    configurable: true,
-  })
-}
-window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
-`;
-
-const _MRG9iURwNGQGL8Wz3ZGP9e_tDBZDC9j1jcGhhHcARrQ = (function(nitro) {
-  nitro.hooks.hook("render:html", (htmlContext) => {
-    htmlContext.head.push(`<script>${script}<\/script>`);
-  });
-});
-
 const rootDir = "/workspace/frontend";
 
 const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
@@ -1115,8 +1101,7 @@ function onConsoleLog(callback) {
 }
 
 const plugins = [
-  _MRG9iURwNGQGL8Wz3ZGP9e_tDBZDC9j1jcGhhHcARrQ,
-_qLLKBzD8SwjhNaK28Q574pIdrxbpSv8IKB05HV6XPeM
+  _qLLKBzD8SwjhNaK28Q574pIdrxbpSv8IKB05HV6XPeM
 ];
 
 const assets = {};
