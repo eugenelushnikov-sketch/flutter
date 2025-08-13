@@ -47,9 +47,6 @@
       "consola": [
         "../node_modules/consola"
       ],
-      "ofetch": [
-        "../node_modules/ofetch"
-      ],
       "@unhead/vue": [
         "../node_modules/@unhead/vue"
       ],
@@ -120,7 +117,7 @@
     "../node_modules",
     "../../node_modules",
     "../node_modules/nuxt/node_modules",
-    "../node_modules/@nuxt/devtools/node_modules",
+    "../node_modules/@pinia/nuxt/node_modules",
     "../node_modules/@nuxt/telemetry/node_modules",
     "../dist"
   ]
