@@ -9,7 +9,7 @@ export default defineNuxtConfig({
 			cdn: process.env.NUXT_PUBLIC_CDN || 'http://localhost:9000/flatworthy-media',
 		},
 	},
-	css: ['@/assets/tailwind.css'],
+	css: ['./assets/tailwind.css'],
 	compatibilityDate: '2025-01-01',
 	future: { compatibilityVersion: 4 },
 	devtools: { enabled: false },
