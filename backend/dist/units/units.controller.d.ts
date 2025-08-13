@@ -1,0 +1,63 @@
+import { UnitsService } from './units.service';
+import { ListingType } from '@prisma/client';
+import { Prisma } from '@prisma/client';
+export declare class UnitsController {
+    private readonly units;
+    constructor(units: UnitsService);
+    create(dto: Prisma.UnitCreateInput): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        listingType: import("@prisma/client").$Enums.ListingType;
+        bedrooms: number | null;
+        bathrooms: number | null;
+        areaSqm: number | null;
+        price: Prisma.Decimal | null;
+        currency: import("@prisma/client").$Enums.Currency | null;
+        floor: number | null;
+        available: boolean;
+        shortDesc: string | null;
+        bulletJson: Prisma.JsonValue | null;
+        mediaIds: string[];
+        projectId: string;
+    }>;
+    getById(id: string): Promise<any>;
+    list(listingType?: ListingType, priceFrom?: string, priceTo?: string, bedrooms?: string, city?: string, projectSlug?: string, offset?: string, limit?: string): Promise<any>;
+    update(id: string, dto: Prisma.UnitUpdateInput): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        listingType: import("@prisma/client").$Enums.ListingType;
+        bedrooms: number | null;
+        bathrooms: number | null;
+        areaSqm: number | null;
+        price: Prisma.Decimal | null;
+        currency: import("@prisma/client").$Enums.Currency | null;
+        floor: number | null;
+        available: boolean;
+        shortDesc: string | null;
+        bulletJson: Prisma.JsonValue | null;
+        mediaIds: string[];
+        projectId: string;
+    }>;
+    remove(id: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        listingType: import("@prisma/client").$Enums.ListingType;
+        bedrooms: number | null;
+        bathrooms: number | null;
+        areaSqm: number | null;
+        price: Prisma.Decimal | null;
+        currency: import("@prisma/client").$Enums.Currency | null;
+        floor: number | null;
+        available: boolean;
+        shortDesc: string | null;
+        bulletJson: Prisma.JsonValue | null;
+        mediaIds: string[];
+        projectId: string;
+    }>;
+}

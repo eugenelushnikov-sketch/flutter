@@ -1,0 +1,76 @@
+import { PrismaService } from '../prisma/prisma.service';
+import { CacheService } from '../cache/cache.service';
+import { Queue } from 'bullmq';
+import { ListingType, Prisma } from '@prisma/client';
+export declare class UnitsService {
+    private readonly prisma;
+    private readonly cache;
+    private readonly indexingQueue;
+    constructor(prisma: PrismaService, cache: CacheService, indexingQueue: Queue);
+    private validateBusinessRulesOnCreateOrUpdate;
+    create(data: Prisma.UnitCreateInput): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        listingType: import("@prisma/client").$Enums.ListingType;
+        bedrooms: number | null;
+        bathrooms: number | null;
+        areaSqm: number | null;
+        price: Prisma.Decimal | null;
+        currency: import("@prisma/client").$Enums.Currency | null;
+        floor: number | null;
+        available: boolean;
+        shortDesc: string | null;
+        bulletJson: Prisma.JsonValue | null;
+        mediaIds: string[];
+        projectId: string;
+    }>;
+    findById(id: string): Promise<any>;
+    list(params: {
+        listingType?: ListingType;
+        priceFrom?: number;
+        priceTo?: number;
+        bedrooms?: number;
+        city?: string;
+        projectSlug?: string;
+        offset?: number;
+        limit?: number;
+    }): Promise<any>;
+    update(id: string, data: Prisma.UnitUpdateInput): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        listingType: import("@prisma/client").$Enums.ListingType;
+        bedrooms: number | null;
+        bathrooms: number | null;
+        areaSqm: number | null;
+        price: Prisma.Decimal | null;
+        currency: import("@prisma/client").$Enums.Currency | null;
+        floor: number | null;
+        available: boolean;
+        shortDesc: string | null;
+        bulletJson: Prisma.JsonValue | null;
+        mediaIds: string[];
+        projectId: string;
+    }>;
+    remove(id: string): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        listingType: import("@prisma/client").$Enums.ListingType;
+        bedrooms: number | null;
+        bathrooms: number | null;
+        areaSqm: number | null;
+        price: Prisma.Decimal | null;
+        currency: import("@prisma/client").$Enums.Currency | null;
+        floor: number | null;
+        available: boolean;
+        shortDesc: string | null;
+        bulletJson: Prisma.JsonValue | null;
+        mediaIds: string[];
+        projectId: string;
+    }>;
+}

@@ -1,0 +1,192 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+  DEVELOPER
+  COMPLEX
+}
+
+enum OrgType {
+  DEVELOPER
+  COMPLEX
+}
+
+enum ProjectStatus {
+  PLANNED
+  UNDER_CONSTRUCTION
+  BUILT
+}
+
+enum ListingType {
+  SALE
+  RENT
+}
+
+enum Currency {
+  UAH
+  USD
+  EUR
+  CAD
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  avatarUrl    String?
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  favorites Favorite[]
+  inquiries Inquiry[]  @relation("UserInquiries")
+  orgs      UserOrg[]
+}
+
+model Org {
+  id          String   @id @default(cuid())
+  type        OrgType
+  name        String
+  slug        String   @unique
+  description String?
+  website     String?
+  socialsJson Json? // {facebook, instagram, youtube, telegram}
+  logoId      String? // MediaAsset.id
+  coverId     String? // MediaAsset.id
+  phone       String?
+  email       String?
+  city        String?
+  country     String?
+  foundedYear Int?
+  statsJson   Json? // {projects, years, awards...}
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  projects  Project[]
+  users     UserOrg[]
+  inquiries Inquiry[] @relation("OrgToInquiry")
+}
+
+model UserOrg {
+  id     String @id @default(cuid())
+  userId String
+  orgId  String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  org  Org  @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, orgId])
+}
+
+model Project {
+  id           String        @id @default(cuid())
+  name         String
+  slug         String        @unique
+  orgId        String
+  description  String?
+  address      String?
+  city         String?
+  lat          Float?
+  lng          Float?
+  status       ProjectStatus @default(PLANNED)
+  deliveryAt   DateTime?
+  heroId       String?
+  featuresJson Json?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  org     Org           @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  units   Unit[]
+  news    ProjectNews[]
+  offices SalesOffice[]
+}
+
+model Unit {
+  id          String      @id @default(cuid())
+  projectId   String
+  title       String
+  listingType ListingType
+  bedrooms    Int?
+  bathrooms   Int?
+  areaSqm     Float?
+  price       Decimal?    @db.Decimal(14, 2)
+  currency    Currency?   @default(USD)
+  floor       Int?
+  available   Boolean     @default(true)
+  shortDesc   String?
+  bulletJson  Json? // ["5 min to metro", ...]
+  mediaIds    String[] // MediaAsset.id[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  project   Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  favorites Favorite[]
+  inquiries Inquiry[]  @relation("UnitInquiries")
+
+  @@index([listingType, available])
+  @@index([price])
+}
+
+model Favorite {
+  id     String @id @default(cuid())
+  userId String
+  unitId String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  unit Unit @relation(fields: [unitId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, unitId])
+}
+
+model Inquiry {
+  id         String   @id @default(cuid())
+  fromUserId String
+  unitId     String
+  toOrgId    String
+  message    String?
+  status     String   @default("NEW")
+  createdAt  DateTime @default(now())
+
+  fromUser User @relation("UserInquiries", fields: [fromUserId], references: [id], onDelete: Cascade)
+  unit     Unit @relation("UnitInquiries", fields: [unitId], references: [id], onDelete: Cascade)
+  toOrg    Org  @relation("OrgToInquiry", fields: [toOrgId], references: [id], onDelete: Cascade)
+}
+
+model ProjectNews {
+  id          String   @id @default(cuid())
+  projectId   String
+  title       String
+  excerpt     String?
+  publishedAt DateTime @default(now())
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model SalesOffice {
+  id        String  @id @default(cuid())
+  projectId String
+  address   String
+  lat       Float?
+  lng       Float?
+  phone     String?
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model MediaAsset {
+  id        String   @id @default(cuid())
+  bucket    String
+  key       String
+  url       String   @unique
+  type      String
+  width     Int?
+  height    Int?
+  createdAt DateTime @default(now())
+}

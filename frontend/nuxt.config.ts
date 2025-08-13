@@ -1,0 +1,17 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+	modules: [
+		'@pinia/nuxt',
+	],
+	runtimeConfig: {
+		public: {
+			apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3001/api',
+			cdn: process.env.NUXT_PUBLIC_CDN || 'http://localhost:9000/flatworthy-media',
+		},
+	},
+	css: ['~/assets/tailwind.css'],
+	compatibilityDate: '2025-01-01',
+	future: { compatibilityVersion: 4 },
+	devtools: { enabled: true },
+	ssr: true,
+})

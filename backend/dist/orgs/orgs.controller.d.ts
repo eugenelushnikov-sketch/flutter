@@ -1,0 +1,66 @@
+import { OrgsService } from './orgs.service';
+import { OrgType, Prisma } from '@prisma/client';
+import { CacheService } from '../cache/cache.service';
+export declare class OrgsController {
+    private readonly orgs;
+    private readonly cache;
+    constructor(orgs: OrgsService, cache: CacheService);
+    create(dto: Prisma.OrgCreateInput): Prisma.Prisma__OrgClient<{
+        type: import("@prisma/client").$Enums.OrgType;
+        email: string | null;
+        name: string;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        slug: string;
+        description: string | null;
+        website: string | null;
+        socialsJson: Prisma.JsonValue | null;
+        logoId: string | null;
+        coverId: string | null;
+        phone: string | null;
+        city: string | null;
+        country: string | null;
+        foundedYear: number | null;
+        statsJson: Prisma.JsonValue | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs, Prisma.PrismaClientOptions>;
+    getBySlug(slug: string): Promise<any>;
+    update(id: string, dto: Prisma.OrgUpdateInput): Prisma.Prisma__OrgClient<{
+        type: import("@prisma/client").$Enums.OrgType;
+        email: string | null;
+        name: string;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        slug: string;
+        description: string | null;
+        website: string | null;
+        socialsJson: Prisma.JsonValue | null;
+        logoId: string | null;
+        coverId: string | null;
+        phone: string | null;
+        city: string | null;
+        country: string | null;
+        foundedYear: number | null;
+        statsJson: Prisma.JsonValue | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs, Prisma.PrismaClientOptions>;
+    findMany(type?: OrgType): Prisma.PrismaPromise<{
+        type: import("@prisma/client").$Enums.OrgType;
+        email: string | null;
+        name: string;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        slug: string;
+        description: string | null;
+        website: string | null;
+        socialsJson: Prisma.JsonValue | null;
+        logoId: string | null;
+        coverId: string | null;
+        phone: string | null;
+        city: string | null;
+        country: string | null;
+        foundedYear: number | null;
+        statsJson: Prisma.JsonValue | null;
+    }[]>;
+}
