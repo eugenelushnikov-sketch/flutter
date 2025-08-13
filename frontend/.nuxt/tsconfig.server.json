@@ -47,9 +47,6 @@
       "consola": [
         "../node_modules/consola"
       ],
-      "ofetch": [
-        "../node_modules/ofetch"
-      ],
       "@unhead/vue": [
         "../node_modules/@unhead/vue"
       ],
