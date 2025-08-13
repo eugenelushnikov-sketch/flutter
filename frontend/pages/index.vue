@@ -1,19 +1,21 @@
 <template>
-	<div class="space-y-12 p-8">
-		<section class="bg-gradient-to-r from-indigo-50 to-white rounded-2xl p-10 text-center">
-			<h1 class="text-4xl font-bold mb-3">Flatworthy — New Builds, Sale & Rent</h1>
-			<p class="text-gray-600 mb-6">Discover projects, units, and developers. Invest confidently.</p>
-			<div class="flex flex-wrap justify-center gap-3">
-				<NuxtLink to="/" class="px-4 py-2 bg-indigo-600 text-white rounded-xl shadow">New Builds</NuxtLink>
-				<NuxtLink to="/" class="px-4 py-2 bg-white border rounded-xl shadow">Sale</NuxtLink>
-				<NuxtLink to="/" class="px-4 py-2 bg-white border rounded-xl shadow">Rent</NuxtLink>
+	<div class="space-y-10">
+		<Hero />
+		<NewsRail />
+		<section class="space-y-4">
+			<div class="flex items-center justify-between">
+				<h2 class="text-lg font-semibold">New builds in the region</h2>
+				<NuxtLink to="/" class="text-sm text-neutral-600 hover:text-neutral-900">See all</NuxtLink>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+				<ProjectCard v-for="n in 8" :key="n" :title="`Residential ${n}`" subtitle="Kyiv" badge="New" />
 			</div>
 		</section>
-		<section>
-			<h2 class="text-xl font-semibold mb-4">New builds in region</h2>
-			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-				<div v-for="n in 6" :key="n" class="rounded-2xl border p-4">Project {{ n }}</div>
-			</div>
-		</section>
+		<DevelopersRow />
+		<StatsStrip />
+		<NewProjects />
+		<SubscribeStrip />
 	</div>
 </template>
+<script setup lang="ts">
+</script>

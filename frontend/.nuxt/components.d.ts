@@ -12,7 +12,14 @@ type HydrationStrategies = {
 }
 type LazyComponent<T> = (T & DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }>)
 interface _GlobalComponents {
-      'CommonFavoriteButton': typeof import("../components/common/FavoriteButton.vue")['default']
+      'CardsProjectCard': typeof import("../components/cards/ProjectCard.vue")['default']
+    'CommonFavoriteButton': typeof import("../components/common/FavoriteButton.vue")['default']
+    'HomeDevelopersRow': typeof import("../components/home/DevelopersRow.vue")['default']
+    'HomeHero': typeof import("../components/home/Hero.vue")['default']
+    'HomeNewProjects': typeof import("../components/home/NewProjects.vue")['default']
+    'HomeNewsRail': typeof import("../components/home/NewsRail.vue")['default']
+    'HomeStatsStrip': typeof import("../components/home/StatsStrip.vue")['default']
+    'HomeSubscribeStrip': typeof import("../components/home/SubscribeStrip.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
     'NuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
     'NuxtErrorBoundary': typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -37,7 +44,14 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
-      'LazyCommonFavoriteButton': LazyComponent<typeof import("../components/common/FavoriteButton.vue")['default']>
+      'LazyCardsProjectCard': LazyComponent<typeof import("../components/cards/ProjectCard.vue")['default']>
+    'LazyCommonFavoriteButton': LazyComponent<typeof import("../components/common/FavoriteButton.vue")['default']>
+    'LazyHomeDevelopersRow': LazyComponent<typeof import("../components/home/DevelopersRow.vue")['default']>
+    'LazyHomeHero': LazyComponent<typeof import("../components/home/Hero.vue")['default']>
+    'LazyHomeNewProjects': LazyComponent<typeof import("../components/home/NewProjects.vue")['default']>
+    'LazyHomeNewsRail': LazyComponent<typeof import("../components/home/NewsRail.vue")['default']>
+    'LazyHomeStatsStrip': LazyComponent<typeof import("../components/home/StatsStrip.vue")['default']>
+    'LazyHomeSubscribeStrip': LazyComponent<typeof import("../components/home/SubscribeStrip.vue")['default']>
     'LazyNuxtWelcome': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
     'LazyNuxtLayout': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
     'LazyNuxtErrorBoundary': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>
@@ -68,7 +82,14 @@ declare module 'vue' {
   export interface GlobalComponents extends _GlobalComponents { }
 }
 
+export const CardsProjectCard: typeof import("../components/cards/ProjectCard.vue")['default']
 export const CommonFavoriteButton: typeof import("../components/common/FavoriteButton.vue")['default']
+export const HomeDevelopersRow: typeof import("../components/home/DevelopersRow.vue")['default']
+export const HomeHero: typeof import("../components/home/Hero.vue")['default']
+export const HomeNewProjects: typeof import("../components/home/NewProjects.vue")['default']
+export const HomeNewsRail: typeof import("../components/home/NewsRail.vue")['default']
+export const HomeStatsStrip: typeof import("../components/home/StatsStrip.vue")['default']
+export const HomeSubscribeStrip: typeof import("../components/home/SubscribeStrip.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
 export const NuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -93,7 +114,14 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
+export const LazyCardsProjectCard: LazyComponent<typeof import("../components/cards/ProjectCard.vue")['default']>
 export const LazyCommonFavoriteButton: LazyComponent<typeof import("../components/common/FavoriteButton.vue")['default']>
+export const LazyHomeDevelopersRow: LazyComponent<typeof import("../components/home/DevelopersRow.vue")['default']>
+export const LazyHomeHero: LazyComponent<typeof import("../components/home/Hero.vue")['default']>
+export const LazyHomeNewProjects: LazyComponent<typeof import("../components/home/NewProjects.vue")['default']>
+export const LazyHomeNewsRail: LazyComponent<typeof import("../components/home/NewsRail.vue")['default']>
+export const LazyHomeStatsStrip: LazyComponent<typeof import("../components/home/StatsStrip.vue")['default']>
+export const LazyHomeSubscribeStrip: LazyComponent<typeof import("../components/home/SubscribeStrip.vue")['default']>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
 export const LazyNuxtLayout: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
 export const LazyNuxtErrorBoundary: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>
